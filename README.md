@@ -83,12 +83,30 @@ From within NORMAL mode you can switch to VISUAL mode with <code>v</code>. (Unfo
 key | action
 --- | ---
 <code>v</code> | Exit VISUAL mode, enter NORMAL mode
+<code>caps lock</code> | Exit VISUAL mode, enter NORMAL mode
 <code>h</code> | Select left
 <code>j</code> | Select down
 ... | Ditto for all other navigation keys mentioned above
-<code>d</code> | Delete (“cut”) the selection and enter NORMAL mode
-<code>y</code> | Yank (“copy”) the selection and enter NORMAL mode
-<code>c</code> | Change (“cut”) the selection and exit Vim Mode entirely
+<code>d</code> | Delete ("cut") the selection and enter NORMAL mode
+<code>y</code> | Yank ("copy") the selection and enter NORMAL mode
+<code>c</code> | Change ("cut") the selection and exit Vim Mode entirely
+<code>x</code> | Remove the selection and enter NORMAL mode
+
+### 1.3 VISUAL LINE mode
+
+From within NORMAL mode you can switch to VISUAL LINE mode with <code>Shift</code>+<code>V</code>. This selects entire lines rather than individual characters.
+
+key | action
+--- | ---
+<code>Shift</code>+<code>V</code> | Exit VISUAL LINE mode, enter NORMAL mode
+<code>caps lock</code> | Exit VISUAL LINE mode, enter NORMAL mode
+<code>j</code> | Select down (next line)
+<code>k</code> | Select up (previous line)
+<code>g</code>,<code>g</code> | Select to start of document
+<code>G</code> | Select to end of document
+<code>d</code> | Delete ("cut") the selection and enter NORMAL mode
+<code>y</code> | Yank ("copy") the selection and enter NORMAL mode
+<code>c</code> | Change ("cut") the selection and exit Vim Mode entirely
 <code>x</code> | Remove the selection and enter NORMAL mode
 
 ## 2. Setting up
