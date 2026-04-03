@@ -3,8 +3,8 @@
   "maintainers": [
     "harmtemolder"
   ],
-  "homepage": "https://git.sr.ht/~harmtemolder/karabiner-vim-mode-plus",
-  "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://git.sr.ht/~harmtemolder/karabiner-vim-mode-plus/blob/master/vim_mode_plus.json",
+  "homepage": "https://raw.githubusercontent.com/atulmirajkar/karabiner-vim-mode-plus/refs/heads/master/vim_mode_plus.json",
+  "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/atulmirajkar/karabiner-vim-mode-plus/refs/heads/master/vim_mode_plus.json",
   "rules": [
     {
       "description": "(Vim 1/11) caps_lock -> on, caps_lock, esc, control+[ or any pointing_button -> off",
