@@ -99,7 +99,9 @@ From within NORMAL mode you can switch to VISUAL LINE mode with <code>Shift</cod
 | key                               | action                                                  |
 | --------------------------------- | ------------------------------------------------------- |
 | <code>Shift</code>+<code>V</code> | Exit VISUAL LINE mode, enter NORMAL mode                |
+| <code>escape</code>               | Exit VISUAL LINE mode, enter NORMAL mode                |
 | <code>caps lock</code>            | Exit VISUAL LINE mode, enter NORMAL mode                |
+| <code>v</code>                    | Switch to VISUAL (character) mode                       |
 | <code>j</code>                    | Select down (next line)                                 |
 | <code>k</code>                    | Select up (previous line)                               |
 | <code>g</code>,<code>g</code>     | Select to start of document                             |
