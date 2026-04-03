@@ -55,6 +55,16 @@
               "name": "vim_mode",
               "type": "variable_unless",
               "value": 1
+            },
+            {
+              "name": "visual_mode",
+              "type": "variable_unless",
+              "value": 1
+            },
+            {
+              "name": "visual_line_mode",
+              "type": "variable_unless",
+              "value": 1
             }
           ],
           "parameters": {
@@ -1029,6 +1039,52 @@
         {
           "type": "basic",
           "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            },
+            {
+              "set_variable": {
+                "name": "visual_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 1
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "visual_mode_enabled",
+                "text": ""
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": "NORMAL - Vim Mode Enabled"
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "visual_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
             "any": "key_code",
             "modifiers": {
               "optional": [
@@ -1669,6 +1725,52 @@
           "to": [
             {
               "key_code": "right_shift"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "visual_line_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            },
+            {
+              "set_variable": {
+                "name": "visual_line_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 1
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "visual_line_mode_enabled",
+                "text": ""
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": "NORMAL - Vim Mode Enabled"
+              }
             }
           ],
           "conditions": [
