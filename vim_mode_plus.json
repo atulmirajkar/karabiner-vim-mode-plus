@@ -1,10 +1,5 @@
 {
   "title": "Vim Mode Plus",
-  "maintainers": [
-    "gilitos92"
-  ],
-  "homepage": "https://raw.githubusercontent.com/atulmirajkar/karabiner-vim-mode-plus/refs/heads/master/vim_mode_plus.json",
-  "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/atulmirajkar/karabiner-vim-mode-plus/refs/heads/master/vim_mode_plus.json",
   "rules": [
     {
       "description": "(Vim 1/11) caps_lock -> on, caps_lock, esc, control+[ or any pointing_button -> off",
@@ -22,13 +17,11 @@
               }
             },
             {
+              "halt": true,
               "set_notification_message": {
                 "id": "vim_mode_plus_enabled",
                 "text": "NORMAL - Vim Mode Enabled"
               }
-            },
-            {
-              "halt": true
             }
           ],
           "to_if_held_down": [
@@ -344,18 +337,13 @@
               "name": "visual_mode",
               "type": "variable_if",
               "value": 1
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_unless",
-              "value": 1
             }
           ]
         },
         {
           "type": "basic",
           "from": {
-            "key_code": "caps_lock"
+            "key_code": "escape"
           },
           "to": [
             {
@@ -835,7 +823,7 @@
             },
             {
               "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
+                "id": "visual_mode_enabled",
                 "text": ""
               }
             }
@@ -878,7 +866,7 @@
             },
             {
               "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
+                "id": "visual_mode_enabled",
                 "text": ""
               }
             }
@@ -924,6 +912,12 @@
                 "id": "vim_mode_plus_enabled",
                 "text": ""
               }
+            },
+            {
+              "set_notification_message": {
+                "id": "visual_mode_enabled",
+                "text": ""
+              }
             }
           ],
           "conditions": [
@@ -961,7 +955,7 @@
             },
             {
               "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
+                "id": "visual_mode_enabled",
                 "text": ""
               }
             }
@@ -1062,501 +1056,7 @@
       ]
     },
     {
-      "description": "(Vim 4/11) line visual mode + j,k,gg,G + d,y,c,x",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "v",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 1
-              }
-            },
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
-            },
-            {
-              "set_notification_message": {
-                "id": "visual_mode_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "v",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "caps_lock"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "j"
-          },
-          "to": [
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "k"
-          },
-          "to": [
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "g_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "g_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "g_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "g_pressed",
-                "value": 0
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "g_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "d"
-          },
-          "to": [
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "y"
-          },
-          "to": [
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "c"
-          },
-          "to": [
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "x"
-          },
-          "to": [
-            {
-              "key_code": "delete_or_backspace"
-            },
-            {
-              "set_variable": {
-                "name": "line_visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "any": "key_code",
-            "modifiers": {
-              "optional": [
-                "any"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "vk_none"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "line_visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 5/11) dd,de,db,d0,d^,d$,dgg,dG,d{,d}",
+      "description": "(Vim 4/11) dd,de,db,d0,d^,d$,dgg,dG,d{,d}",
       "manipulators": [
         {
           "type": "basic",
@@ -2125,7 +1625,7 @@
       ]
     },
     {
-      "description": "(Vim 6/11) yy,ye,yb,y0,y^,y$,ygg,yG,y{,y}",
+      "description": "(Vim 5/11) yy,ye,yb,y0,y^,y$,ygg,yG,y{,y}",
       "manipulators": [
         {
           "type": "basic",
@@ -2701,7 +2201,7 @@
       ]
     },
     {
-      "description": "(Vim 7/11) cc,ce,cb,c0,c^,c$,cgg,cG,c{,c}",
+      "description": "(Vim 6/11) cc,ce,cb,c0,c^,c$,cgg,cG,c{,c}",
       "manipulators": [
         {
           "type": "basic",
@@ -3397,7 +2897,7 @@
       ]
     },
     {
-      "description": "(Vim 8/11) x,X,p,P,u,control+r",
+      "description": "(Vim 7/11) x,X,p,P,u,control+r",
       "manipulators": [
         {
           "type": "basic",
@@ -3562,7 +3062,7 @@
       ]
     },
     {
-      "description": "(Vim 9/11) h,j,k,l (+ control/option/command/shift),e,b,0,^,$,gg,G,{,}",
+      "description": "(Vim 8/11) h,j,k,l (+ control/option/command/shift),e,b,0,^,$,gg,G,{,}",
       "manipulators": [
         {
           "type": "basic",
@@ -3997,7 +3497,7 @@
       ]
     },
     {
-      "description": "(Vim 10/11) i,I,a,A,o,O",
+      "description": "(Vim 9/11) i,I,a,A,o,O",
       "manipulators": [
         {
           "type": "basic",
@@ -4236,7 +3736,7 @@
       ]
     },
     {
-      "description": "(Vim 11/11) s,m,spacebar -> Hammerspoon modals",
+      "description": "(Vim 10/11) s,m,spacebar -> Hammerspoon modals",
       "manipulators": [
         {
           "type": "basic",
@@ -4343,7 +3843,7 @@
       ]
     },
     {
-      "description": "(Vim 12/11) disable unused keys",
+      "description": "(Vim 11/11) disable unused keys",
       "manipulators": [
         {
           "type": "basic",
