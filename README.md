@@ -26,6 +26,7 @@ Within NORMAL mode you can then move around with:
 | <code>j</code>                | Move cursor down\*                             |
 | <code>k</code>                | Move cursor up\*                               |
 | <code>l</code>                | Move cursor right\*                            |
+| <code>w</code>                | Move cursor to next start of word              |
 | <code>e</code>                | Move cursor to next end of word                |
 | <code>b</code>                | Move cursor to previous start of word          |
 | <code>0</code>                | Move cursor to start of line (before any tabs) |
@@ -43,6 +44,7 @@ Combine those with <code>d</code>, <code>y</code> and <code>c</code> to delete (
 | key                                                                                           | action                                              |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | <code>d</code>,<code>d</code> / <code>y</code>,<code>y</code> / <code>c</code>,<code>c</code> | Delete/yank/change the entire line                  |
+| <code>d</code>,<code>w</code> / <code>y</code>,<code>w</code> / <code>c</code>,<code>w</code> | Delete/yank/change to the next start of word        |
 | <code>d</code>,<code>e</code> / <code>y</code>,<code>e</code> / <code>c</code>,<code>e</code> | Delete/yank/change to the next end of word          |
 | <code>d</code>,<code>b</code> / ... / ...                                                     | Delete/yank/change to the previous start of word    |
 | ...                                                                                           | Ditto for all other navigation keys mentioned above |
