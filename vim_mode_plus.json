@@ -311,45 +311,50 @@
             }
           ]
         },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "v"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "visual_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "shell_command": "osascript -e 'display notification \"Press [i] to leave\" with title \"-- NORMAL --\"'"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": [
-                "com.googlecode.iterm2",
-                "com.github.atom",
-                "com.jetbrains.pycharm",
-                "com.visualstudio.code.oss"
-              ]
-            },
-            {
-              "name": "visual_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
+         {
+           "type": "basic",
+           "from": {
+             "key_code": "v"
+           },
+           "to": [
+             {
+               "set_variable": {
+                 "name": "visual_mode",
+                 "value": 0
+               }
+             },
+             {
+               "set_variable": {
+                 "name": "vim_mode",
+                 "value": 1
+               }
+             },
+             {
+               "shell_command": "osascript -e 'display notification \"Press [i] to leave\" with title \"-- NORMAL --\"'"
+             }
+           ],
+           "conditions": [
+             {
+               "type": "frontmost_application_unless",
+               "bundle_identifiers": [
+                 "com.googlecode.iterm2",
+                 "com.github.atom",
+                 "com.jetbrains.pycharm",
+                 "com.visualstudio.code.oss"
+               ]
+             },
+             {
+               "name": "visual_mode",
+               "type": "variable_if",
+               "value": 1
+             },
+             {
+               "name": "line_visual_mode",
+               "type": "variable_unless",
+               "value": 1
+             }
+           ]
+         },
         {
           "type": "basic",
           "from": {
@@ -1157,55 +1162,61 @@
      {
        "description": "(Vim 4/11) line visual mode + j,k,gg,G + d,y,c,x",
        "manipulators": [
-         {
-           "type": "basic",
-           "from": {
-             "key_code": "v",
-             "modifiers": {
-               "mandatory": [
-                 "shift"
-               ]
-             }
-           },
-           "to": [
-             {
-               "set_variable": {
-                 "name": "vim_mode",
-                 "value": 0
-               }
-             },
-             {
-               "set_variable": {
-                 "name": "line_visual_mode",
-                 "value": 1
-               }
-             },
-             {
-               "shell_command": "osascript -e 'display notification \"Press [V] again to go back to Vim Mode\" with title \"-- VISUAL LINE --\"'"
-             }
-           ],
-           "conditions": [
-             {
-               "type": "frontmost_application_unless",
-               "bundle_identifiers": [
-                 "com.googlecode.iterm2",
-                 "com.github.atom",
-                 "com.jetbrains.pycharm",
-                 "com.visualstudio.code.oss"
-               ]
-             },
-             {
-               "name": "vim_mode",
-               "type": "variable_if",
-               "value": 1
-             },
-             {
-               "name": "line_visual_mode",
-               "type": "variable_unless",
-               "value": 1
-             }
-           ]
-         },
+          {
+            "type": "basic",
+            "from": {
+              "key_code": "v",
+              "modifiers": {
+                "mandatory": [
+                  "shift"
+                ]
+              }
+            },
+            "to": [
+              {
+                "set_variable": {
+                  "name": "vim_mode",
+                  "value": 0
+                }
+              },
+              {
+                "set_variable": {
+                  "name": "line_visual_mode",
+                  "value": 1
+                }
+              },
+              {
+                "key_code": "down_arrow",
+                "modifiers": [
+                  "left_shift"
+                ]
+              },
+              {
+                "shell_command": "osascript -e 'display notification \"Press [V] again to go back to Vim Mode\" with title \"-- VISUAL LINE --\"'"
+              }
+            ],
+            "conditions": [
+              {
+                "type": "frontmost_application_unless",
+                "bundle_identifiers": [
+                  "com.googlecode.iterm2",
+                  "com.github.atom",
+                  "com.jetbrains.pycharm",
+                  "com.visualstudio.code.oss"
+                ]
+              },
+              {
+                "name": "vim_mode",
+                "type": "variable_if",
+                "value": 1
+              },
+              {
+                "name": "line_visual_mode",
+                "type": "variable_unless",
+                "value": 1
+              }
+            ]
+          },
          {
            "type": "basic",
            "from": {
