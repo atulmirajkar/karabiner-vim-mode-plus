@@ -1255,6 +1255,13 @@
               "modifiers": [
                 "left_shift"
               ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
             }
           ],
           "conditions": [
@@ -1279,6 +1286,13 @@
               "key_code": "up_arrow",
               "modifiers": [
                 "left_shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
               ]
             }
           ],
