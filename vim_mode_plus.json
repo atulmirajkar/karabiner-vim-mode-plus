@@ -1548,6 +1548,15 @@
               ]
             },
             {
+              "key_code": "left_arrow"
+            },
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 1
+              }
+            },
+            {
               "set_variable": {
                 "name": "visual_line_mode",
                 "value": 0
@@ -3827,6 +3836,51 @@
             },
             {
               "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "return_or_enter"
+            },
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "linewise_yank",
               "type": "variable_if",
               "value": 1
             }
