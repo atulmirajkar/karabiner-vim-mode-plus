@@ -2,7 +2,7 @@
   "title": "Vim Mode Plus",
   "rules": [
     {
-      "description": "(Vim 1/10) caps_lock -> on, caps_lock, esc, control+[ or any pointing_button -> off",
+      "description": "(Vim 1/12) caps_lock -> on, caps_lock, esc, control+[ or any pointing_button -> off",
       "manipulators": [
         {
           "type": "basic",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "description": "(Vim 2/10) finger on trackpad + any key -> off",
+      "description": "(Vim 2/12) finger on trackpad + any key -> off",
       "available_since": "12.6.9",
       "manipulators": [
         {
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "description": "(Vim 3/10) visual mode + h,j,k,l,e,b,0,^,$,gg,G,{,} + d,y,c,x",
+      "description": "(Vim 3/12) visual mode + h,j,k,l,e,b,0,^,$,gg,G,{,} + d,y,c,x",
       "manipulators": [
         {
           "type": "basic",
@@ -1063,7 +1063,7 @@
       ]
     },
     {
-      "description": "(Vim 4/10) visual line mode (V) + j,k,G,gg,h,l + d,y,c,x",
+      "description": "(Vim 4/12) visual line mode (V) + j,k,G,gg,h,l + d,y,c,x",
       "manipulators": [
         {
           "type": "basic",
@@ -1792,7 +1792,2750 @@
       ]
     },
     {
-      "description": "(Vim 9/10) r + [char] - replace character under cursor",
+      "description": "(Vim 5/12) dd,de,db,d0,d^,d$,dgg,dG,d{,d}",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "d_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "dg_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "dg_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "dg_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "dg_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "dg_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "a",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "d_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "k",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "d_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "(Vim 6/12) yy,ye,yb,y0,y^,y$,ygg,yG,y{,y}",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "y_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "yg_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "yg_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "yg_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "yg_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "yg_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "a",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "y_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "e",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "y_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "(Vim 7/12) cc,ce,cb,c0,c^,c$,cgg,cG,c{,c}",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "c_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "cg_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "cg_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "cg_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "cg_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "cg_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_shift",
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "a",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "c_pressed",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "e",
+              "modifiers": [
+                "left_control",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "c_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "(Vim 8/12) x,X,p,P,u,control+r,D",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "x",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x"
+          },
+          "to": [
+            {
+              "key_code": "delete_forward"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "return_or_enter"
+            },
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "linewise_yank",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p"
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "p",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "u"
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "z",
+              "modifiers": [
+                "left_command",
+                "left_shift"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "(Vim 9/12) h,j,k,l (+ control/option/command/shift),e,b,0,^,$,gg,G,{,}",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "optional": [
+                "control",
+                "option",
+                "command",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "optional": [
+                "control",
+                "option",
+                "command",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "optional": [
+                "control",
+                "option",
+                "command",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "optional": [
+                "control",
+                "option",
+                "command",
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "e"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "w"
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_alt"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "b"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_alt"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "0"
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "g_pressed",
+                "value": 1
+              }
+            }
+          ],
+          "to_delayed_action": {
+            "to_if_invoked": [
+              {
+                "set_variable": {
+                  "name": "g_pressed",
+                  "value": 0
+                }
+              }
+            ]
+          },
+          "parameters": {
+            "basic.to_delayed_action_delay_milliseconds": 500
+          },
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "g_pressed",
+              "type": "variable_unless",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g"
+          },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "set_variable": {
+                "name": "g_pressed",
+                "value": 0
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            },
+            {
+              "name": "g_pressed",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "a",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "close_bracket",
+            "modifiers": {
+              "mandatory": [
+                "shift"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "e",
+              "modifiers": [
+                "left_control"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "(Vim 10/12) r + [char] - replace character under cursor",
       "manipulators": [
         {
           "type": "basic",
@@ -5921,2750 +8664,7 @@
       ]
     },
     {
-      "description": "(Vim 4/10) dd,de,db,d0,d^,d$,dgg,dG,d{,d}",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "d"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "d_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "d"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "e"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "w"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "b"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "0"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "6",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "4",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "dg_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "dg_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "dg_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "dg_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "dg_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "d_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "k",
-              "modifiers": [
-                "left_control"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "d_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 5/10) yy,ye,yb,y0,y^,y$,ygg,yG,y{,y}",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "y"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "y_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "y"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "e"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "w"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "b"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "0"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "6",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "4",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "yg_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "yg_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "yg_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "yg_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "yg_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "y_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "e",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "c",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "y_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 6/10) cc,ce,cb,c0,c^,c$,cgg,cG,c{,c}",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "c"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "c_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "c"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "e"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "w"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "b"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "0"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "6",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "4",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "set_variable": {
-                "name": "cg_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "cg_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "cg_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "cg_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "cg_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_shift",
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "a",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "c_pressed",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "e",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
-              }
-            },
-            {
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": ""
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "c_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 7/10) x,X,p,P,u,control+r,D",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "d",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            },
-            {
-              "key_code": "x",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "x"
-          },
-          "to": [
-            {
-              "key_code": "delete_forward"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "x",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "delete_or_backspace"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "p"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "linewise_yank",
-                "value": 0
-              }
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "return_or_enter"
-            },
-            {
-              "key_code": "v",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "linewise_yank",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "p"
-          },
-          "to": [
-            {
-              "key_code": "v",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "p",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "v",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "u"
-          },
-          "to": [
-            {
-              "key_code": "z",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "mandatory": [
-                "control"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "z",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 8/10) h,j,k,l (+ control/option/command/shift),e,b,0,^,$,gg,G,{,}",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "h",
-            "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_arrow"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "j",
-            "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "down_arrow"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "k",
-            "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "up_arrow"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "l",
-            "modifiers": {
-              "optional": [
-                "control",
-                "option",
-                "command",
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "right_arrow"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "e"
-          },
-          "to": [
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "w"
-          },
-          "to": [
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "b"
-          },
-          "to": [
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_alt"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "0"
-          },
-          "to": [
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "6",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "left_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "4",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "right_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "set_variable": {
-                "name": "g_pressed",
-                "value": 1
-              }
-            }
-          ],
-          "to_delayed_action": {
-            "to_if_invoked": [
-              {
-                "set_variable": {
-                  "name": "g_pressed",
-                  "value": 0
-                }
-              }
-            ]
-          },
-          "parameters": {
-            "basic.to_delayed_action_delay_milliseconds": 500
-          },
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "g_pressed",
-              "type": "variable_unless",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g"
-          },
-          "to": [
-            {
-              "key_code": "up_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            },
-            {
-              "set_variable": {
-                "name": "g_pressed",
-                "value": 0
-              }
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            },
-            {
-              "name": "g_pressed",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "down_arrow",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "open_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "a",
-              "modifiers": [
-                "left_control"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "close_bracket",
-            "modifiers": {
-              "mandatory": [
-                "shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "e",
-              "modifiers": [
-                "left_control"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "frontmost_application_unless",
-              "bundle_identifiers": []
-            },
-            {
-              "name": "vim_mode",
-              "type": "variable_if",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "(Vim 9/10) i,I,a,A,o,O",
+      "description": "(Vim 11/12) i,I,a,A,o,O",
       "manipulators": [
         {
           "type": "basic",
@@ -8903,7 +8903,7 @@
       ]
     },
     {
-      "description": "(Vim 10/10) disable unused keys",
+      "description": "(Vim 12/12) disable unused keys",
       "manipulators": [
         {
           "type": "basic",
