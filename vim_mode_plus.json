@@ -806,6 +806,12 @@
           },
           "to": [
             {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
               "key_code": "c",
               "modifiers": [
                 "left_command"
@@ -2475,6 +2481,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
                 "name": "y_pressed",
                 "value": 0
               }
@@ -2530,6 +2542,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
                 "name": "y_pressed",
                 "value": 0
               }
@@ -2571,6 +2589,12 @@
             "key_code": "w"
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
             {
               "set_variable": {
                 "name": "y_pressed",
@@ -2630,6 +2654,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
                 "name": "y_pressed",
                 "value": 0
               }
@@ -2671,6 +2701,12 @@
             "key_code": "0"
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
             {
               "set_variable": {
                 "name": "y_pressed",
@@ -2728,6 +2764,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
                 "name": "y_pressed",
                 "value": 0
               }
@@ -2774,6 +2816,12 @@
             }
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
             {
               "set_variable": {
                 "name": "y_pressed",
@@ -2873,6 +2921,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 1
+              }
+            },
+            {
+              "set_variable": {
                 "name": "yg_pressed",
                 "value": 0
               }
@@ -2919,6 +2973,12 @@
             }
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 1
+              }
+            },
             {
               "set_variable": {
                 "name": "y_pressed",
@@ -2969,6 +3029,12 @@
           "to": [
             {
               "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
                 "name": "y_pressed",
                 "value": 0
               }
@@ -3015,6 +3081,12 @@
             }
           },
           "to": [
+            {
+              "set_variable": {
+                "name": "linewise_yank",
+                "value": 0
+              }
+            },
             {
               "set_variable": {
                 "name": "y_pressed",
@@ -3914,12 +3986,6 @@
             "key_code": "p"
           },
           "to": [
-            {
-              "set_variable": {
-                "name": "linewise_yank",
-                "value": 0
-              }
-            },
             {
               "key_code": "right_arrow",
               "modifiers": [
