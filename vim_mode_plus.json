@@ -9,22 +9,7 @@
           "from": {
             "key_code": "caps_lock"
           },
-          "to_if_alone": [
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 1
-              }
-            },
-            {
-              "halt": true,
-              "set_notification_message": {
-                "id": "vim_mode_plus_enabled",
-                "text": "NORMAL - Vim Mode Enabled"
-              }
-            }
-          ],
-          "to_if_held_down": [
+          "to": [
             {
               "set_variable": {
                 "name": "vim_mode",
@@ -35,14 +20,6 @@
               "set_notification_message": {
                 "id": "vim_mode_plus_enabled",
                 "text": "NORMAL - Vim Mode Enabled"
-              }
-            }
-          ],
-          "to_after_key_up": [
-            {
-              "set_variable": {
-                "name": "vim_mode",
-                "value": 0
               }
             }
           ],
@@ -66,11 +43,38 @@
               "type": "variable_unless",
               "value": 1
             }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock"
+          },
+          "to": [
+            {
+              "set_variable": {
+                "name": "vim_mode",
+                "value": 0
+              }
+            },
+            {
+              "set_notification_message": {
+                "id": "vim_mode_plus_enabled",
+                "text": ""
+              }
+            }
           ],
-          "parameters": {
-            "basic.to_if_alone_threshold_milliseconds": 0,
-            "basic.to_if_held_down_threshold_milliseconds": 100
-          }
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": []
+            },
+            {
+              "name": "vim_mode",
+              "type": "variable_if",
+              "value": 1
+            }
+          ]
         },
         {
           "type": "basic",
