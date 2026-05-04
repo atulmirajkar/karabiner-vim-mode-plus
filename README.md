@@ -54,6 +54,7 @@ Also:
 | key                                 | action          |
 | ----------------------------------- | --------------- |
 | <code>r</code>                      | Replace character under cursor  |
+| <code>D</code>                      | Delete to end of line           |
 | <code>x</code>                      | Delete forward  |
 | <code>X</code>                      | Delete back     |
 | <code>p</code> or <code>P</code>    | Paste at cursor |
