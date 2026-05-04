@@ -259,6 +259,9 @@
           },
           "to": [
             {
+              "key_code": "left_arrow"
+            },
+            {
               "set_variable": {
                 "name": "visual_mode",
                 "value": 0
@@ -805,6 +808,9 @@
               ]
             },
             {
+              "key_code": "left_arrow"
+            },
+            {
               "set_variable": {
                 "name": "visual_mode",
                 "value": 0
@@ -1128,6 +1134,9 @@
             "key_code": "escape"
           },
           "to": [
+            {
+              "key_code": "left_arrow"
+            },
             {
               "set_variable": {
                 "name": "visual_line_mode",
