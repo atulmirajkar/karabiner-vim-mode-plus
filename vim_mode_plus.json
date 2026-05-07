@@ -1884,13 +1884,19 @@
               ]
             },
             {
-              "key_code": "x",
+              "key_code": "c",
               "modifiers": [
                 "left_command"
               ]
             },
             {
-              "key_code": "delete_forward"
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_shift"
+              ]
+            },
+            {
+              "key_code": "delete_or_backspace"
             }
           ],
           "conditions": [
